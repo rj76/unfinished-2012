@@ -103,15 +103,15 @@ define([
 
         myworld.loadObjects(function() {
 //            music.play();
-            music.barCounterTimer(myworld.mainCamera);
+            music.barCounterTimer();
             myworld.runEvents();
-            console.log(myworld);
             animate();
+            console.log(myworld);
         });
 
         function onWindowResize(event) {
             renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-            myworld.onWindowResize(event);
+//            myworld.onWindowResize(event);
         }
 
         function render() {

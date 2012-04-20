@@ -8,7 +8,7 @@ define(['generic/Wobj'], function (Wobj) {
         this.events = [];
         this.material = false;
         this.geometry = false;
-        var clock = new THREE.Clock();
+        var clock = new THREE.Clock(1);
 
         this.done = false;
 
@@ -40,7 +40,7 @@ define(['generic/Wobj'], function (Wobj) {
                     morph.duration = 1000 * ( ( animation.max - animation.min ) / 6 );
                     morph.baseDuration = morph.duration;
 
-                    morph.setFrameRange( animation.min, animation.max );
+//                    morph.setFrameRange( animation.min, animation.max );
 
                     self.flowers.push(morph);
                 }
@@ -89,7 +89,7 @@ define(['generic/Wobj'], function (Wobj) {
         function playAnimation(mesh, fps) {
             var animation = mesh.firstAnimation;
 
-            mesh.setFrameRange( animation.min, animation.max );
+//            mesh.setFrameRange( animation.min, animation.max );
             mesh.duration = 1000 * ( ( animation.max - animation.min ) / fps );
             mesh.baseDuration = mesh.duration;
             mesh.time = 0;

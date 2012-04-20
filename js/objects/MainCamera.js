@@ -15,8 +15,8 @@ define(function() {
 //            0              // Far clipping plane
 //        );
 
-        this.camera = new THREE.Camera( 3, window.innerWidth / window.innerHeight, -2000, 10000 );
-        this.camera.projectionMatrix = THREE.Matrix4.makeOrtho( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, - 2000, 10000 );
+        this.camera = new THREE.PerspectiveCamera(3, window.innerWidth / window.innerHeight, -2000, 10000);
+        this.camera.projectionMatrix = THREE.Matrix4.makeOrtho(window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, - 2000, 10000);
         this.camera.position.x = -10;
         this.camera.position.y = 10; // 30 degree angle from the xz plane
         this.camera.position.z = 150;

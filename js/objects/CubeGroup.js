@@ -13,9 +13,7 @@ define(['objects/Cube', 'mixins/GroupMixin', 'generic/Wobj'], function(Cube, Gro
         this.offsetZ = 200;
 
         for (var i=0;i<this.positions.length;i++) {
-            var o = new Cube(self.positions[i][0], self.positions[i][1], self.duration, self.color, this, isMoving);
-            o.id = i;
-            this.addItem(o);
+            this.addItem(new Cube(self.positions[i][0], self.positions[i][1], self.duration, self.color, this, isMoving));
         }
         this.done = true;
 

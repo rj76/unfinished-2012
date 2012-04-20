@@ -23,6 +23,7 @@ define(function() {
             var done = 0;
             for (var i=0;i<this.objects.length;this.objects[i++].done ? done++ : setTimeout(function() { world.loadObjects(doneCallback); }, 1000)) ;
             if (done == this.objects.length) {
+                console.log('done loading objects');
                 doneCallback();
             }
         };

@@ -1,16 +1,17 @@
 define(['objects/Palm', 'mixins/GroupMixin', 'generic/Wobj'], function(Palm, GroupMixin, Wobj) {
     function PalmGroup(numItems) {
         Palm.prototype.world = this.world;
+        var d = new Date();
+
         var self = this;
-        this.name = 'palmgroup';
-        this.done = false;
+        this.name = 'palmgroup'+d.getTime();
         this.positions = [
             [8, 1],
             [8, 2],
             [9, 1],
             [9, 2]
         ];
-
+        this.done = false;
         this.numItems = this.positions.length;
 
         // make sure the mixin knows our name
@@ -20,7 +21,6 @@ define(['objects/Palm', 'mixins/GroupMixin', 'generic/Wobj'], function(Palm, Gro
             for (var i=0;i<self.numItems;i++) {
                 self.addItem(new Palm(geometry, self.positions[i][0], self.positions[i][1], i));
             }
-
             self.done = true;
         });
 
