@@ -1,10 +1,10 @@
 define([
     'generic/Music', 'generic/Events', 'generic/World', 'objects/CloudGroup', 'objects/MainCamera',
     'objects/Light1', 'objects/Light2', 'objects/Light3', 'objects/Floor', 'objects/FireFlowers', 'objects/PalmGroup',
-    'objects/CubeGroup',
+    'objects/CubeGroup', 'objects/Monster'
     ],
     function(Music, Events, World, CloudGroup, MainCamera, Light1, Light2, Light3, Floor, FireFlowers, PalmGroup,
-        CubeGroup) {
+        CubeGroup, Monster) {
         var startTime	= Date.now();
 
         if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
@@ -66,7 +66,7 @@ define([
         // Fix this
         CloudGroup.prototype.world = MainCamera.prototype.world = Light1.prototype.world = Light2.prototype.world =
             Light3.prototype.world = Floor.prototype.world = FireFlowers.prototype.world = PalmGroup.prototype.world =
-                 CubeGroup.prototype.world = myworld;
+                 CubeGroup.prototype.world = Monster.prototype.world = myworld;
 
         myworld.addObject(new MainCamera());
         myworld.addObject(new CloudGroup({ c: 4 }));
@@ -100,6 +100,7 @@ define([
             music.getBarLength()*2,
             true
         ));
+        myworld.addObject(new Monster());
 
         myworld.loadObjects(function() {
 //            music.play();
@@ -117,6 +118,7 @@ define([
         function render() {
             TWEEN.update();
             renderer.render(scene, myworld.mainCamera);
+            myworld.mainCamera.lookAt(scene.position);
             if (haveStats) {
                 stats.update();
             }
